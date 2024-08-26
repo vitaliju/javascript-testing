@@ -10,7 +10,14 @@ Basket functionality:
         2. Price is correct with multiple items. + 
         3. Price is correct when an item is removed. +
         4. Price is 0 after the 'empty basket is clicked' +
-        5. 
+        5. Price is correct with item and standart shipping. -
+            total price with 1 item and standart shipping is not correct £11.99
+        6. Price is correct with multiple items and standart shipping.  -
+            total price with multiple items and standart shipping is NaN
+        7. Price is correct when an item is removed with standart shipping. -
+          total price after cliced empty basket and standart shipping is not corrrect.
+        8. Does Promo code works. -
+           Standart shipping change to Collet(free) after Promo code is cliced 
 
     Billing address functionality:
         Form Validation:
