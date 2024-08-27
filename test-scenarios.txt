@@ -10,15 +10,53 @@ Basket functionality:
         2. Price is correct with multiple items. + 
         3. Price is correct when an item is removed. +
         4. Price is 0 after the 'empty basket is clicked' +
-        5. Price is correct with item and standart shipping. -
-            total price with 1 item and standart shipping is not correct £11.99
-        6. Price is correct with multiple items and standart shipping.  -
+
+        5. Price is correct with item and standart shipping. (fail)
+            total price with 1 item and standart shipping is incorrect £11.99
+
+        6. Price is correct with multiple items and standart shipping. (fail)
             total price with multiple items and standart shipping is NaN
-        7. Price is correct when an item is removed with standart shipping. -
-          total price after cliced empty basket and standart shipping is not corrrect.
-        8. Does Promo code works. -
-           Standart shipping change to Collet(free) after Promo code is cliced 
+
+        7. Price is correct when an item is removed with standart shipping. (fail)
+          total price after cliced empty basket and cliced standart shipping is incorrrect.
+
+        8. Does Promo code works. (fail)
+           Standart shipping change to Collect(free) after Promo code is clicked 
 
     Billing address functionality:
+
         Form Validation:
+        1. First name does not accept spaces. (fail)
+           first name accept spaces
+
+        2. First name does not accept numbers. (fail)  
+           first name accept numbers
+
+        3. First name does not accept symbols. (fail)  
+           first name accept symbols
+
+        4. Last name does not accept spaces. (fail)
+           last name accept spaces
+
+        5. Last name does not accept numbers. (fail)
+           last name accept numbers
+
+        6. Last name does not accept symbols. (fail)
+           last name accept symbols
+ 
+        7. Does address accept symbols. (fail)
+           address accept symbols
+
+        8. User can choose his country for shipping items. (fail)   
+           user can choose only United Kingdom
+
+        9. User can choose his city for shipping items. (fail)
+           user can choose only Bristol, Cardiff and Swansea
+
+        10. Zip code does not accept letters symbols. (fail)
+            zip code accept letters and symbols
+
+    Payment Validation:
+        1.         
+
         
