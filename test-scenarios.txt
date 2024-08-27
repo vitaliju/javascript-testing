@@ -1,11 +1,25 @@
 Sweets functionality
 
-Login functionality
+Login functionality:
+
+    Email Validation:
+
+        1. Login accepts valid email address. (fail)
+           accept invalid email address
+    Password Validation
+
+        1. Login accepts valid password. (fail)
+           accepts invalid password
+
+        2. Password visability.
+           user can't see the password he wrote (should be button for visability)     
 
 Basket functionality:
+
       Price calculation functionality:
 
         Does the price get calculate in the following scenarios:
+
         1. Price is correct with a single item. + 
         2. Price is correct with multiple items. + 
         3. Price is correct when an item is removed. +
@@ -47,16 +61,17 @@ Basket functionality:
         7. Does address accept symbols. (fail)
            address accept symbols
 
-        8. User can choose his country for shipping items. (fail)   
-           user can choose only United Kingdom
+        8. User can select country for shipping items. (fail)   
+           user can select only United Kingdom
 
-        9. User can choose his city for shipping items. (fail)
-           user can choose only Bristol, Cardiff and Swansea
+        9. User can select city for shipping items. (fail)
+           user can select only Bristol, Cardiff and Swansea
 
         10. Zip code does not accept letters symbols. (fail)
             zip code accept letters and symbols
 
     Payment Validation:
+
         1. Full name is capital letters only. (fail)
            full name accept low case letters, symbols and numbers
 
@@ -66,6 +81,9 @@ Basket functionality:
         3. Credit card expiration only accepts numbers and divide symbol. (fail) 
            expiration accepts letters and other symbols
 
-        4. CVV only accepts numbers. +               
+        4. CVV only accepts integer number. + 
+
+        5. CVV only accepts positive numbers. (fail)
+            accepts negative numbers                         
 
         
