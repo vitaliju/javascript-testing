@@ -57,6 +57,15 @@ Basket functionality:
             zip code accept letters and symbols
 
     Payment Validation:
-        1.         
+        1. Full name is capital letters only. (fail)
+           full name accept low case letters, symbols and numbers
+
+        2. Credit card number only accepts numbers. (fail)
+           credit card number accepts letters and symbols
+
+        3. Credit card expiration only accepts numbers and divide symbol. (fail) 
+           expiration accepts letters and other symbols
+
+        4. CVV only accepts numbers. +               
 
         
