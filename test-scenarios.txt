@@ -1,4 +1,12 @@
-Sweets functionality
+Sweets functionality:
+     1. Product description when image is clicked.
+        no descriptions
+
+     2. The price of quantity.
+         unknown of what qauntity price is 
+
+     3. All items have images.(fail)
+        Wham Bars don't have image
 
 Login functionality:
 
