@@ -24,3 +24,8 @@
 -   Working in a team
 
 ### Day 4
+
+-   Front-end
+-   Backend
+-   REST api
+-   Postman
