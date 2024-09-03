@@ -39,3 +39,9 @@
 -   Swagger
 -   Restful
 -   Api functionalities.
+
+### Day 2.
+
+-   Postgre install
+-   Databases intro
+-   SCRUM
