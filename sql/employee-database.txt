@@ -1,0 +1,76 @@
+
+CREATE TABLE Company (
+    companyID SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    phoneNo VARCHAR(20) NOT NULL
+);
+
+insert into company (name, address, phoneNo)
+values ('SP industries', 'Chemijos g. 19A, Kaunas', '+370 684 69707'),
+('Admen Baltic', 'R. Kalantos g. 49k, Kaunas', '+370 686 13027'),
+('Telesoftas', 'K. Donelaičio g. 60, Kaunas', '+370 694 20375'),
+('Tiksaviems SharkLinker', 'Ramybės g. 4-70, Vilnius', '+370 656 88962')
+
+select * from company
+
+CREATE TABLE Employee (
+    employeeID SERIAL PRIMARY KEY,
+    forename VARCHAR(100) NOT NULL,
+    surname VARCHAR(100) NOT NULL,
+    dateOfBirth DATE NOT NULL,
+    sexType VARCHAR(100) NOT NULL,
+    companyID INT REFERENCES company(companyID)
+);
+
+insert into employee (forename, surname, dateOfBirth, sexType, companyID)
+values ('John', 'Doe', '1985-03-22', 'Male', 1),
+    ('Jane', 'Smith', '1990-07-12', 'Female', 2),
+    ('Joana', 'Paulauskiene', '1978-10-03', 'Female', 2),
+    ('Emily', 'Brown', '1988-05-17', 'Female', 3),
+    ('Martynas', 'Dimsa', '1995-09-28', 'Male', 1),
+    ('Sandra', 'Vaitkeviciute', '1987-01-14', 'Female', 2),
+    ('Dainius', 'Timuras', '1992-11-30', 'Male', 3),
+    ('Chris', 'Moore', '1983-06-15', 'Other', 4),
+    ('Lina', 'Andruiskiene', '1996-04-21', 'Female', 4),
+    ('Paulius', 'Javainis', '1993-12-09', 'Male', 1);
+
+select * from employee
+
+CREATE TABLE Salary (
+    salaryID SERIAL PRIMARY KEY,
+    employeeID INT REFERENCES employee(employeeID),
+    salaryType VARCHAR(10),
+    amount DECIMAL(10, 2)
+);
+
+insert into Salary (employeeID, salaryType, amount)
+values (1, 'monthly', 2000.00),
+    (2, 'hourly', 18.00),
+    (4, 'monthly', 1800.00),
+    (5, 'hourly', 21.00),
+    (6, 'monthly', 1500.00),
+    (8, 'monthly', 2200.00),
+    (10, 'monthly', 3000.00);
+
+select * from salary
+
+select c.companyID, c.name, count (e.employeeID) as female_count 
+from company c
+join employee e on c.companyID = e.companyID
+where e.sexType = 'Female'
+group by c.companyID, c.name
+order by count(e.employeeID)desc
+limit 1
+
+select c.companyID, c.name, e.employeeID, e.forename, e.surname, s.amount 
+from company c
+join employee e on c.companyID = e.companyID
+join salary s on e.employeeID = s.employeeID
+where s.salaryType = 'monthly'
+order by s.amount desc
+limit 1
+
+select e.employeeID, e.forename, e.surname from employee e
+left join salary s on e.employeeID = s.employeeID
+where s.salaryID is null;

@@ -21,7 +21,7 @@ CREATE TABLE shopItems2 (
   quantity INT,
   price INT
 );
-
+// pakeicia INT i DECIMAL
 alter table shopItems2 alter column price type decimal(10,2);
 
 select * from shops
