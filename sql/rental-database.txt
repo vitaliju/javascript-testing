@@ -1,0 +1,29 @@
+-- Get customers full_name who has rented most movies in 2005
+
+select concat(c.first_name, ' ', c.last_name) as full_name, count(rental_id) as total_rentals
+from rental r
+join customer c on r.customer_id = c.customer_id
+where r.rental_date >= '2005-01-01' and r.rental_date < '2006-01-01'
+group by c.customer_id, full_name
+order by total_rentals desc
+limit 1;
+
+--GEt top 3 actors who have been involved in most movies.
+
+select concat(a.first_name, ' ', a.last_name) as full_name, count(fa.film_id) as total_movies
+from actor a
+join film_actor fa on a.actor_id = fa.actor_id
+group by a.actor_id, full_name
+order by total_movies desc
+limit 3;
+
+--Get the movie which has been the most profitable
+
+select f.title, sum(p.amount) as total_profit
+from film f
+join inventory i on f.film_id = i.film_id
+join rental r on i.inventory_id = r.inventory_id
+join payment p on r.rental_id = p.rental_id
+group by f.film_id, f.title
+order by total_profit desc
+limit 1;

@@ -2,19 +2,19 @@
 
 ## Week 1
 
-### Day 1
+### Day 1.
 
 -   Regression testing
 -   White box vs Black box testing
 -   Testing scenarios.
 -   Functional testing
 
-### Day 2
+### Day 2.
 
 -   Testplan/document
 -   testomat tool
 
-### Day 3
+### Day 3.
 
 -   SDLC
 -   Waterfall
@@ -23,7 +23,7 @@
 -   Trello
 -   Working in a team
 
-### Day 4
+### Day 4.
 
 -   Front-end
 -   Backend
@@ -46,7 +46,7 @@
 -   Databases intro
 -   SCRUM
 
-### Day 3
+### Day 3.
 
 -   Working with Postgre
 -   Primary key
@@ -54,9 +54,18 @@
 -   Relationships
 -   Joins.
 
-### Day 4
+### Day 4.
 
 -   Backups
 -   Functions
 -   Indexes
 -   Views
+
+### Week 3
+
+### Day 1.
+
+-   SCRUM
+-   Jira
+
+-   Javascript/Express
