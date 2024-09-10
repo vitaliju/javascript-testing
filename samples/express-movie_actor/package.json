@@ -1,0 +1,18 @@
+{
+    "name": "express-movie_actor",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "dev": "nodemon movie_actor.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "express": "^4.20.0"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.4"
+    }
+}
