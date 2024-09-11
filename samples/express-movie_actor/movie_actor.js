@@ -10,7 +10,7 @@ let movies = [];
 app.use(express.json());
 
 // Helper function to check if date is in the future
-const isFutureDate = (date) => new Date(date) <= new Date();
+const isFutureDate = (date) => new Date(date) > new Date();
 
 // Create a new actor
 app.post('/actors', (req, res) => {
