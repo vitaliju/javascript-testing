@@ -87,7 +87,14 @@
 ### Day 4
 
 -   Javascript express programming
--   Intro to basic Postman tests.### Day 4
-
--   Javascript express programming
 -   Intro to basic Postman tests.
+
+## Week 4
+
+### Day 1
+
+-   Naming conventions
+-   Postman Prerequest
+-   Postman setting variables
+-   Postman running collections
+-   Postman AI
