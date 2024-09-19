@@ -35,12 +35,17 @@
             margin-bottom: 5px;
         }
 
-        .form-field input {
+        .form-field input,
+        select {
             width: 100%;
             padding: 8px;
             box-sizing: border-box;
             border: 1px solid #ccc;
             border-radius: 4px;
+        }
+
+        .form-field select {
+            color: grey;
         }
 
         button {
@@ -74,6 +79,10 @@
             padding: 10px;
             text-align: center;
         }
+
+        .under-18 {
+            background-color: red;
+        }
     </style>
 </head>
 
@@ -84,6 +93,15 @@
         <div class="form-field">
             <label for="name">Name:</label>
             <input type="text" id="name" placeholder="Enter your name">
+        </div>
+        <div class="form-field">
+            <label for="gender">Gender:</label>
+            <select id="gender">
+                <option value=""></option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
         </div>
         <div class="form-field">
             <label for="email">Email:</label>
@@ -106,9 +124,11 @@
             <thead>
                 <tr>
                     <th>Name</th>
+                    <th>Gender</th>
                     <th>Email</th>
                     <th>Phone</th>
                     <th>Date of Birth</th>
+                    <th>Age</th>
                 </tr>
             </thead>
             <tbody>
@@ -117,18 +137,44 @@
     </div>
 
     <script>
+        window.onload = function () {
+            const randomPhone = Math.floor(Math.random() * 90000000 + 10000000);
+            document.getElementById('phone').value = randomPhone;
+        };
+
+        function calculateAge(dob) {
+            const birthDate = new Date(dob);
+            const today = new Date();
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const monthDiff = today.getMonth() - birthDate.getMonth();
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            return age;
+        }
+
         function submitForm() {
             // Get values from input fields
             const name = document.getElementById('name').value;
+            const gender = document.getElementById('gender').value;
             const email = document.getElementById('email').value;
             const phone = document.getElementById('phone').value;
             const dob = document.getElementById('dob').value;
 
             // Validation to ensure no empty fields
-            if (name === "" || email === "" || phone === "" || dob === "") {
+            if (name === "" || gender === "" || email === "" || phone === "" || dob === "") {
                 alert("Please fill out all fields.");
                 return;
             }
+
+            // Validation to ensure phone contains only numbers
+            if (!/^\d+$/.test(phone)) {
+                alert("Phone number must just be numbers.");
+                return;
+            }
+
+            // Calculate age
+            const age = calculateAge(dob);
 
             // Insert the values into the table
             // const table = document.getElementById("infoTable").getElementsByTagName('tbody')[0];
@@ -136,12 +182,21 @@
             const newRow = table.insertRow();
 
             newRow.insertCell(0).innerHTML = name;
-            newRow.insertCell(1).innerHTML = email;
-            newRow.insertCell(2).innerHTML = phone;
-            newRow.insertCell(3).innerHTML = dob;
+            newRow.insertCell(1).innerHTML = gender;
+            newRow.insertCell(2).innerHTML = email;
+            newRow.insertCell(3).innerHTML = phone;
+            newRow.insertCell(4).innerHTML = dob;
+            newRow.insertCell(5).innerHTML = age;
+
+            // Highlight row if under 18
+            if (age < 18) {
+                newRow.classList.add('under-18');
+                //newRow.style.backgroundColor = 'red';
+            }
 
             // Clear input fields after submission
             document.getElementById('name').value = "";
+            document.getElementById('gender').value = "";
             document.getElementById('email').value = "";
             document.getElementById('phone').value = "";
             document.getElementById('dob').value = "";
