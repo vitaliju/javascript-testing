@@ -98,3 +98,17 @@
 -   Postman setting variables
 -   Postman running collections
 -   Postman AI
+
+### Day 2
+
+-   Running postman with Newman Console.
+-   Git conflicts.
+
+### Day 3
+
+-   Fe Recap
+-   HTML
+-   CSS
+-   Javascript
+-   Class/ Id
+-   Chrome Developer tools
