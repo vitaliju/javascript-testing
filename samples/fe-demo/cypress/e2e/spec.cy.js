@@ -12,30 +12,14 @@ describe('Automated tests for local website works', () => {
     cy.contains('h2', 'Registration Form');
   });
 
-  it('Name form field is visible and empty', () => {
+  it('Name, Gender, Email, Phone, Date of Birth  form fields are visible and empty', () => {
     cy.visit(pageUrl);
     cy.get('#name').should('be.visible').and('have.value', '');
-  })
-
-  it('Gender form field is visible and empty', () => {
-    cy.visit(pageUrl);
     cy.get('#gender').should('be.visible').and('have.value', '');
-  });
-
-  it('Email form field is visible and empty', () => {
-    cy.visit(pageUrl);
     cy.get('#email').should('be.visible').and('have.value', '');
-  });
-
-  it('Phone form field is visible and empty', () => {
-    cy.visit(pageUrl);
     cy.get('#phone').should('be.visible');
-  });
-
-  it('Date of Birth form field is visible and empty', () => {
-    cy.visit(pageUrl);
     cy.get('#dob').should('be.visible').and('have.value', '');
-  });
+  })
 
   it('display Submit button on load', () => {
     cy.visit(pageUrl);
