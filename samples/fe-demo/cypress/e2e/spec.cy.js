@@ -1,19 +1,17 @@
 const pageUrl = " http://127.0.0.1:8080/"
 
 describe('Automated tests for local website works', () => {
-  it('the page loads successfully', () => {
-    cy.visit(pageUrl);
+  beforeEach(() => {
+    cy.visit(pageUrl)
   });
 
   it('display Registration form on load', () => {
-    cy.visit(pageUrl);
     cy.get("h2").should('have.text', 'Registration Form');
     //cy.contains('Registration Form');
     //cy.contains('h2', 'Registration Form');
   });
 
   it('shows Name, Gender, Email, Phone, Date of Birth  form fields are visible and empty', () => {
-    cy.visit(pageUrl);
     cy.get('#name').should('be.visible').and('have.value', '');
     cy.get('#gender').should('be.visible').and('have.value', '');
     cy.get('#email').should('be.visible').and('have.value', '');
@@ -22,17 +20,14 @@ describe('Automated tests for local website works', () => {
   });
 
   it('display Submit button on load', () => {
-    cy.visit(pageUrl);
-    cy.get("button").should('have.text', 'Submit');
+    cy.get("button").should('have.text', 'Submit').click();
   });
 
   it('display Submitted Information table on load', () => {
-    cy.visit(pageUrl);
     cy.get("h3").should('have.text', 'Submitted Information');
   });
 
   it('shows Submitted Information table has Name, Gender, Email, Phone, Date of Birth, Age columns', () => {
-    cy.visit(pageUrl);
     cy.contains('th', 'Name');
     cy.contains('th', 'Gender');
     cy.contains('th', 'Email');
@@ -42,12 +37,10 @@ describe('Automated tests for local website works', () => {
   });
 
   it('shows Submitted Information table is empty', () => {
-    cy.visit(pageUrl);
     cy.get("tbody").should('have.value', '');
   });
 
   it('should not allow form submission with empty fields', () => {
-    cy.visit(pageUrl)
     cy.get('button').click();
     cy.on('window:alert', (text) => {
       expect(text).to.equal('Please fill out all fields.');
@@ -55,7 +48,6 @@ describe('Automated tests for local website works', () => {
   });
 
   it('Allows to fill the data', () => {
-    cy.visit(pageUrl);
     cy.get("#name").type('Vitalijus');
     cy.get("#gender").select('Male');
     cy.get("#email").type('vitalijus.bielkinas@gmail.com');
@@ -64,7 +56,6 @@ describe('Automated tests for local website works', () => {
   });
 
   it('Should display the correct data in the table', () => {
-    cy.visit(pageUrl);
     cy.get("#name").type('Vitalijus');
     cy.get("#gender").select('Male');
     cy.get("#email").type('vitalijus.bielkinas@gmail.com');
@@ -78,7 +69,6 @@ describe('Automated tests for local website works', () => {
   });
 
   it('After the sending the registration form gets emptied.', () => {
-    cy.visit(pageUrl);
     cy.get("#name").type('Vitalijus');
     cy.get("#gender").select('Male');
     cy.get("#email").type('vitalijus.bielkinas@gmail.com');
