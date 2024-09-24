@@ -1,17 +1,21 @@
 const pageUrl = " http://127.0.0.1:8080/"
 
-describe('Automated tests for local website works', () => {
+describe('Website loads elements correctly', () => {
   beforeEach(() => {
     cy.visit(pageUrl)
   });
 
-  it('display Registration form on load', () => {
+  it('displays Registration form on load', () => {
     cy.get("h2").should('have.text', 'Registration Form');
     //cy.contains('Registration Form');
     //cy.contains('h2', 'Registration Form');
   });
 
-  it('shows Name, Gender, Email, Phone, Date of Birth  form fields are visible and empty', () => {
+  it('shows Name, Gender, Email, Phone, Date of Birth  labels are visible', () => {
+    cy.get('label').should('be.visible').and('have.text', 'Name:Gender:Email:Phone Number:Date of Birth:');
+  });
+
+  it('shows Name, Gender, Email, Phone, Date of Birth  inputs  are visible and empty', () => {
     cy.get('#name').should('be.visible').and('have.value', '');
     cy.get('#gender').should('be.visible').and('have.value', '');
     cy.get('#email').should('be.visible').and('have.value', '');
@@ -19,7 +23,7 @@ describe('Automated tests for local website works', () => {
     cy.get('#dob').should('be.visible').and('have.value', '');
   });
 
-  it('display Submit button on load', () => {
+  it('displays Submit button on load', () => {
     cy.get("button").should('have.text', 'Submit').click();
   });
 
@@ -82,23 +86,4 @@ describe('Automated tests for local website works', () => {
   });
 });
 
-//  Check that all elements load
-
-//   - Check that Registration title is displayed
-
-//   - Check that form is visible and empty
-
-//   - Check that the Submit button is visible.
-
-//   - The table is visible and empty.
-//
-
-//  Happy path functionlity
-
-//   - I am able to fill data and submit it.
-
-//   - The table contains the data i have sent
-
-//   - After the sending the registration form gets emptied.
-// 
 
