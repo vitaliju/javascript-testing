@@ -130,5 +130,4 @@
 ### Day 2
 
 -   Cypress Commands
--   Cypress Fixtures
 -   CI/CD
