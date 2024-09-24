@@ -126,3 +126,9 @@
 -   beforeEach cypress
 -   cypress best practices
 -   Reusing the code in Cypress tests.
+
+### Day 2
+
+-   Cypress Commands
+-   Cypress Fixtures
+-   CI/CD
