@@ -9,6 +9,15 @@ function successfullSubmit(name, gender, email, phone, dob) {
 
   cy.contains('button', 'Submit').click();
 };
+function ageSubmit(name, gender, email, phone, dob) {
+  cy.get("#name").type(name);
+  cy.get("#gender").select(gender);
+  cy.get("#email").type(email);
+  cy.get("#phone").clear().type('12356489');
+  cy.get("#dob").type('2019-01-02');
+
+  cy.contains('button', 'Submit').click();
+};
 
 describe('Website loads elements correctly', () => {
   beforeEach(() => {
@@ -22,17 +31,26 @@ describe('Website loads elements correctly', () => {
       //cy.contains('h2', 'Registration Form');
     });
 
-    it('shows Name, Gender, Email, Phone, Date of Birth  labels are visible', () => {
-      cy.get('label').should('be.visible').and('have.text', 'Name:Gender:Email:Phone Number:Date of Birth:');
+    it('displays labels for all required input fields', () => {
+      cy.get('label[for="name"]').should('exist').and('have.text', 'Name:');
+      cy.get('label[for="gender"]').should('exist').and('have.text', 'Gender:');
+      cy.get('label[for="email"]').should('exist').and('have.text', 'Email:');
+      cy.get('label[for="phone"]').should('exist').and('have.text', 'Phone Number:');
+      cy.get('label[for="dob"]').should('exist').and('have.text', 'Date of Birth:');
     });
+
 
     it('shows Name, Gender, Email, Phone, Date of Birth  inputs  are visible and empty', () => {
       cy.get('#name').should('be.visible').and('have.text', '');
       cy.get('#gender').should('be.visible').and('have.value', '');
       cy.get('#email').should('be.visible').and('have.text', '');
-      cy.get('#phone').should('be.visible');
+      cy.get('#phone').invoke('val').should('match', /^\d{8}$/);
       cy.get('#dob').should('be.visible').and('have.text', '');
     });
+
+    it('displays random phone number is generated on load', () => {
+      cy.get('#phone').invoke('val').should('match', /^\d{8}$/);
+    })
 
     it('displays Submit button on load', () => {
       cy.get("button").should('have.text', 'Submit');
@@ -55,7 +73,7 @@ describe('Website loads elements correctly', () => {
     });
 
     it('shows Submitted Information table is empty', () => {
-      cy.get("tbody").should('have.value', '');
+      cy.get("tbody tr").should('have.length', 0);
     });
   });
 });
@@ -70,16 +88,9 @@ describe('Submit functionality', () => {
 
   beforeEach(() => {
     cy.visit(pageUrl)
-  })
-
-  it('should not allow form submission with empty fields', () => {
-    cy.get('button').click();
-    cy.on('window:alert', (text) => {
-      expect(text).to.equal('Please fill out all fields.');
-    });
   });
 
-  it('Allows to fill data, submit and shows up in the table', () => {
+  it('allows to fill data, submit and shows up in the table', () => {
     successfullSubmit(name, gender, email, phone, dob);
 
     cy.get('#infoTable tbody tr').should('have.length', 1)
@@ -115,5 +126,58 @@ describe('Submit functionality', () => {
   });
 });
 
+describe('Alerts testing', () => {
+  beforeEach(() => {
+    cy.visit(pageUrl)
+  });
 
+  describe('Empty selected field alerts', () => {
+    it('should not allow form submission with empty fields', () => {
+      cy.get('button').click();
+      cy.on('window:alert', (text) => {
+        expect(text).to.equal('Please fill out all fields.');
+      });
+    });
 
+  });
+
+  // describe('Phone number alerts', () => {
+  //   it('should allow only number digits for phone', () => {
+
+  //   });
+  // });
+});
+
+describe('Set red background if age under 18', () => {
+  beforeEach(() => {
+    cy.visit(pageUrl)
+  });
+  const name = 'Vitalijus';
+  const gender = 'Male';
+  const email = 'vitalijus.bielkinas@gmail.com';
+  const phone = '12356489';
+  const dob = '2019-01-02';
+
+  it('should set red background', () => {
+    ageSubmit(name, gender, email, phone, dob);
+    cy.get('tbody tr').last().should('have.class', 'under-18');
+    cy.get('tbody tr').last().find('td').eq(5).should('contain', '5')
+  });
+});
+
+describe('Age calculation is correct', () => {
+  beforeEach(() => {
+    cy.visit(pageUrl)
+  });
+  const name = 'Vitalijus';
+  const gender = 'Male';
+  const email = 'vitalijus.bielkinas@gmail.com';
+  const phone = '12356489';
+  const dob = '1989-01-02';
+
+  it('should calculate age correctly', () => {
+    successfullSubmit(name, gender, email, phone, dob);
+    cy.get('tbody tr').last().find('td').eq(5).should('contain', '35');
+    cy.get('tbody td').last().should('not.have.class', 'under-18');
+  });
+});
