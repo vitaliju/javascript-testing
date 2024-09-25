@@ -168,7 +168,7 @@
             }
 
             // Validation to ensure phone contains only numbers
-            if (!/^\d+$/.test(phone)) {
+            if (!/^\d{8}$/.test(phone)) {
                 alert("Phone number must just be numbers.");
                 return;
             }
