@@ -22,8 +22,8 @@ function phoneSubmit(name, gender, email, phone, dob) {
   cy.get("#name").type(name);
   cy.get("#gender").select(gender);
   cy.get("#email").type(email);
-  cy.get("#phone").clear().type('12356489');
-  cy.get("#dob").type('2019-01-02');
+  cy.get("#phone").clear().type('12356abc');
+  cy.get("#dob").type('1989-01-02');
 
   cy.contains('button', 'Submit').click();
 };
@@ -154,13 +154,13 @@ describe('Alerts testing', () => {
     const name = 'Vitalijus';
     const gender = 'Male';
     const email = 'vitalijus.bielkinas@gmail.com';
-    const phone = '12356489';
-    const dob = '2019-01-02';
+    const phone = '12356abc';
+    const dob = '1989-01-02';
 
     it('should allow only numbers for phone number', () => {
       phoneSubmit(name, gender, email, phone, dob);
       cy.on('window:alert', (text) => {
-        expect(text).to.equal('"Phone number must just be numbers."');
+        expect(text).to.equal("Phone number must just be numbers.");
       });
     });
   });
