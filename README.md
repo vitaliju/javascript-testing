@@ -138,3 +138,10 @@
 -   Linux virtual machines
 -   Pipelines
 -   Github actions/Yml.
+
+### Day 4
+
+-   Portfolio
+-   Integration test
+-   Unit test
+-   TDD
