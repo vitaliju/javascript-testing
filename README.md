@@ -155,7 +155,7 @@
 
 ### Day 2
 
--   Running tests paralelly
+-   Running tests parallel
 -   Mobile testing
 -   Headless browsers
 
