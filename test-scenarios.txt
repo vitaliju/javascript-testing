@@ -3,7 +3,7 @@ Sweets functionality:
         no descriptions
 
      2. The price of quantity.
-         unknown of what qauntity price is 
+         unknown of what quantity price is 
 
      3. All items have images.(fail)
         Wham Bars don't have image
@@ -14,13 +14,14 @@ Login functionality:
 
         1. Login accepts valid email address. (fail)
            accept invalid email address
+
     Password Validation
 
         1. Login accepts valid password. (fail)
            accepts invalid password
 
-        2. Password visability.
-           user can't see the password he wrote (should be button for visability)     
+        2. Password visibility.
+           user can't see the password he wrote (should be button for visibility)     
 
 Basket functionality:
 
@@ -40,7 +41,7 @@ Basket functionality:
             total price with multiple items and standart shipping is NaN
 
         7. Price is correct when an item is removed with standart shipping. (fail)
-          total price after cliced empty basket and cliced standart shipping is incorrrect.
+          total price after clicked empty basket and clicked standart shipping is incorrect.
 
         8. Does Promo code works. (fail)
            Standart shipping change to Collect(free) after Promo code is clicked 
